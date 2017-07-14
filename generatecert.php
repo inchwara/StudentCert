@@ -73,35 +73,7 @@
 
           </div>
           <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <h1 class="page-header">Dashboard</h1>
-
-            <div class="row placeholders">
-              <div class="col-xs-6 col-sm-4 placeholder">
-                <div class="panel panel-primary">
-                <div class="panel-heading">Total Certificated Issues</div>
-                  <div class="panel-body">
-                    600
-                  </div>
-                </div>
-              </div>
-              <div class="col-xs-6 col-sm-4 placeholder">
-                <div class="panel panel-primary">
-                  <div class="panel-heading">Enrolled Students</div>
-                  <div class="panel-body">
-                    230
-                  </div>
-                </div>
-              </div>
-              <div class="col-xs-6 col-sm-4 placeholder">
-               <div class="panel panel-primary">
-                <div class="panel-heading">Courses</div>
-                <div class="panel-body">
-                  150
-                </div>
-              </div>
-            </div>
-           
-        </div>
+            <h1 class="page-header">Generate Certificate</h1>
 
         <h2 class="sub-header">Student Details</h2>
         <div class="table-responsive">
@@ -110,9 +82,9 @@
               <tr>
                 <th>Student Name</th>
                 <th>Admission Number</th>
-                <th>Email</th>
                 <th>Phone Number</th>
                 <th>Course</th>
+                <th>Generate</th>
               </tr>
             </thead>
 
@@ -123,8 +95,8 @@
             while($row = $res->fetch_assoc()){
 
               $name = $row['studentName'];
+              $studentID = $row['studentID'];
               $adm = $row['admNumber'];
-              $email = $row['email'];
               $phone = $row['phoneNumber'];
               $course = $row['course'];
 
@@ -132,9 +104,13 @@
              <tr>
               <td><?php echo $name; ?></td>
               <td><?php echo $adm; ?></td>
-              <td><?php echo $email; ?></td>
               <td><?php echo $phone; ?></td>
-              <td><?php echo $course; }?></td>
+              <td><?php echo $course; ?></td>
+              <td>
+              <form method="post" action="cert.php">
+                            <input type="text" name="studentID" value="<?php echo $studentID; ?>">
+                            <button type="submit" name="generate" class="btn btn-success">Generate</button>
+                            <?php } ?></td>
             </tr>
           </tbody>
         </table>
