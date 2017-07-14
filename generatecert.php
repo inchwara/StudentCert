@@ -63,11 +63,10 @@
               <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
               <li><a href="#">Students</a></li>
               <li><a href="#">Reports</a></li>
-              <li><a href="#">Courses</a></li>
               <li><a href="generatecert.php">Generate Certificate</a></li>
             </ul>
             <ul class="nav nav-sidebar">
-              <li><a href="">Add Student</a></li>
+              <li><a href="register.php">Add Student</a></li>
               <li><a href="">Add Courses</a></li>
             </ul>
 
@@ -75,49 +74,55 @@
           <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <h1 class="page-header">Generate Certificate</h1>
 
-        <h2 class="sub-header">Student Details</h2>
-        <div class="table-responsive">
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th>Student Name</th>
-                <th>Admission Number</th>
-                <th>Phone Number</th>
-                <th>Course</th>
-                <th>Generate</th>
-              </tr>
-            </thead>
+            <h2 class="sub-header">Student Details</h2>
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Student Name</th>
+                    <th>Admission Number</th>
+                    <th>Phone Number</th>
+                    <th>Course</th>
+                    <th>Generate</th>
+                  </tr>
+                </thead>
 
-            <tbody>
-            <?php
-            include ("config/db.php");
-            $res = $conn->query("SELECT * FROM student");
-            while($row = $res->fetch_assoc()){
+                <tbody>
+                  <?php
+                  include ("config/db.php");
+                  $res = $conn->query("SELECT * FROM student");
+                  while($row = $res->fetch_array()){
 
-              $name = $row['studentName'];
-              $studentID = $row['studentID'];
-              $adm = $row['admNumber'];
-              $phone = $row['phoneNumber'];
-              $course = $row['course'];
+                    $name = $row['studentName'];
+                    $myID = $row['studentID'];
+                    $adm = $row['admNumber'];
+                    $phone = $row['phoneNumber'];
+                    $course = $row['course'];
 
-            ?>
-             <tr>
-              <td><?php echo $name; ?></td>
-              <td><?php echo $adm; ?></td>
-              <td><?php echo $phone; ?></td>
-              <td><?php echo $course; ?></td>
-              <td>
-              <form method="post" action="cert.php">
-                            <input type="text" name="studentID" value="<?php echo $studentID; ?>">
-                            <button type="submit" name="generate" class="btn btn-success">Generate</button>
-                            <?php } ?></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-</div>
+                    ?>
+                    <tr>
+                      <td><?php echo $name; ?></td>
+                      <td><?php echo $adm; ?></td>
+                      <td><?php echo $phone; ?></td>
+                      <td><?php echo $course; ?></td>
+                      <td>
+
+                        <form method="POST" action="cert.php">
+                        <input type="hidden" name="student" value ="<?php echo $myID;?>">
+                          <button type="submit" name="generate" class="btn btn-success">Generate</button>
+                          
+
+                        </form>
+                        </td>
+                      </tr>
+
+                      <?php } ?>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

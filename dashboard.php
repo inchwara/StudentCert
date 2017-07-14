@@ -63,11 +63,10 @@
               <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
               <li><a href="#">Students</a></li>
               <li><a href="#">Reports</a></li>
-              <li><a href="#">Courses</a></li>
               <li><a href="generatecert.php">Generate Certificate</a></li>
             </ul>
             <ul class="nav nav-sidebar">
-              <li><a href="">Add Student</a></li>
+              <li><a href="register.php">Add Student</a></li>
               <li><a href="">Add Courses</a></li>
             </ul>
 

@@ -1,19 +1,16 @@
 <?php
 include 'config/db.php';
 
-$studentID = $_POST['studentID'];
+$myID = $_POST['student'];
 
-$res = $conn->query("SELECT * FROM student WHERE studentID = $studentID");
+$res = $conn->query("SELECT * FROM student WHERE studentID = $myID");
            
-$row = $res->fetch_assoc();
+$row = $res->fetch_array();
               $name = $row['studentName'];
-              $istudentID = $row['studentID'];
               $adm = $row['admNumber'];
               $phone = $row['phoneNumber'];
               $course = $row['course'];
-
-              echo $name;
-
+       
 ?>
 
 <!DOCTYPE html>
@@ -68,8 +65,7 @@ $row = $res->fetch_assoc();
   border-width: 4px;
   border-color: black" class="inner cover">
           <img src="logo.png"">
-            <h1 class="cover-heading">ARIFU UNIVERSITY</h1><br>
-
+            <h1 class="cover-heading">ARIFU UNIVERSITY</h1>
             <h3>This Degree is awarded to</h3>
             <h2><?php echo $name;?></h2>
 
