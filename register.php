@@ -46,9 +46,10 @@ if(isset($_POST['submit'])){
   $pass = mysqli_real_escape_string($conn,$_POST['password']);
   $email = mysqli_real_escape_string($conn,$_POST['email']);
   $phoneNumber = mysqli_real_escape_string($conn,$_POST['phoneNumber']);
+  $course = mysqli_real_escape_string($conn,$_POST['course']);
 
-  $result = $conn->query("INSERT INTO student (studentName,admNumber,password,email,phoneNumber) 
-    VALUES ('$studentName','$adm','$pass','$email','$phoneNumber')");
+  $result = $conn->query("INSERT INTO student (studentName,admNumber,password,email,phoneNumber,course) 
+    VALUES ('$studentName','$adm','$pass','$email','$phoneNumber','$course')")or die(mysqli_error($conn));;
   
   if($result){
     header("location: dashboard.php");
@@ -59,14 +60,24 @@ if(isset($_POST['submit'])){
 }
 ?>
 
-      <form class="form-signin" method="POST" action="register.php"><br><br><br><br>
-        <h2 class="form-signin-heading">Create Account</h2><br>
+      <form class="form-signin" method="POST" action="register.php"><br><br><br>
+        <h2 class="form-signin-heading">Student Information</h2><br>
         <label for="inputText" class="sr-only">Admission Number</label>
         <input type="text" id="inputText" name="studentName" class="form-control" placeholder="Student Name" required autofocus><br>
         <input type="text" id="inputText" name="admNumber" class="form-control" placeholder="Admission Number" required autofocus><br>
         <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
         <input type="text" id="inputText" name="email" class="form-control" placeholder="Email" required autofocus><br>
         <input type="text" id="inputText" name="phoneNumber" class="form-control" placeholder="Phone Number" required autofocus><br>
+  
+        <select name="course" class="form-control">
+  <option value="-">Select Course</option>
+  <option value="Business Management">Business Management</option>
+  <option value="Supply Chain Managemen">Supply Chain Management</option>
+  <option value="Software Engineering">Software Engineering</option>
+  <option value="Sale and Marketing">Sale and Marketing</option>
+  <option value="Human Resourse Management">Human Resourse Management</option>
+  <option value="Aviation Maintenance">Aviation Maintenance</option>
+</select><br>
         
   <div>
         </div>
